@@ -10,32 +10,24 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class UserModel {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int userId;
-	public String userName;
-	public String password;
+	private Integer userId;
+	private String userName;
+	private String password;
 	@Column(unique = true)
-	public String email;
-	public String role;
+	private String email;
+	private String role;
 
 	public UserModel() {
 	}
 
-	public UserModel(int userId, String userName, String password, String email, String role) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.role = role;
-	}
-
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

@@ -1,7 +1,8 @@
 package com.example.SpringBoot_Application.Controller;
 
 import java.util.List;
-import java.util.Optional;
+
+import javax.management.relation.RoleNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,12 @@ import com.example.SpringBoot_Application.service.UserService;
 @RestController
 public class UserController {
 
+  
+
 	@Autowired
 	UserService userService;
+
+   
 
 	@PostMapping("/save")
 	public UserModel save(@RequestBody UserModel userModel) {
@@ -40,4 +45,9 @@ public class UserController {
 	public UserModel findByEmailId(@PathVariable String emailid) {
 		return userService.getUserByEmailId(emailid);
 	}
+	
+	@GetMapping("/getbyrole/{role}")
+			public List<UserModel> findByRole(@PathVariable String role) throws RoleNotFoundException {
+				return userService.getUserByRole(role);
+			}
 }
